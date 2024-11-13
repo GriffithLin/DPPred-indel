@@ -48,13 +48,13 @@ For details on extracting DNA features, refer to the readme of ./DNABERT.
 
 ## Training and test DPPred-indel model
 ```shell
-DPPred-indel.py
+python DPPred-indel.py
 ```
 
 ## Related Files
 | FILE NAME         | DESCRIPTION                                                                             |
 |:------------------|:----------------------------------------------------------------------------------------|
-| DPPred-indel.py           | the main file of DPPred-indel predictor (include data reading, encoding, and data partitioning) |
+| DPPred-indel.py           | the main file of DPPred-indel predictor |
 | train.py          | train model                                                                             |
 | models/model.py          | model construction                                                                      |
 | my_util.py           | utils used to build models                                                              |
@@ -89,19 +89,19 @@ For details on extracting protein features, refer to the readme of esm.
 
 For details on extracting DNA features, refer to the readme of DNABERT.
 
-## extra data input for student and DA
+## extra input data for student model and the implementation  of DA 
 | dataset            | pos data | neg data | total  |
 |-------------------|-------|-------|------|
 | Ds-train-KD      | 5812  | 5302  | 11114 |
-train dataset of DPPred-indel have had the target domain data removed.
+explanation:train dataset of DPPred-indel have had the target domain data removed.
 protein seq：source_train_index.csv 
 DNA k-mer seq：NotContext/5/225/source_train/dev.tsv
 | Ds-testdata-KD      | 869   | 869   | 1738 |
-the test dataset 1 of DPPred-indel.
+explanation:the test dataset 1 of DPPred-indel.
 protein seq：test_protein.csv
 DNA k-mer seq：NotContext/5/225/dev.tsv
 | Ds-DA           | 6666  | 6153  | 12819 |
-The source domain's training and test sets have had the target domain data removed.
+explanation:The source domain's training and test sets have had the target domain data removed.
 protein seq：source_Data_index.csv
 DNA k-mer seq：NotContext/5/225/source/train.tsv
 | Target Domain train Set       | -     | -     | 5808 |
@@ -110,6 +110,18 @@ DNA k-mer seq：NotContext/5/225/DA/train.tsv
 | Target Domain Test Set       | 200   | 182   | 382   |
 protein seq：target_test_index.csv
 DNA k-mer seq：NotContext/5/225/DA/dev.tsv
+
+## Training and test DPPred-Cindel model
+
+```shell
+# train teachre model
+python trainForKD.py
+# train student model via knowledge distillation
+python KD_MAIN_best.py
+# Training and test DPPred-Cindel model
+python DA_DANN_student.py
+```
+
 
 ## related file
 | FILE NAME         | DESCRIPTION                                                                             |
