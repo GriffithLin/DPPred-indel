@@ -1,0 +1,2 @@
+run_train.sh: line 1: 864265 Killed                  python trainForKD.py -dropout 0.4 > output.log 2>&1
+run_train.sh: line 2: 1325444 Killed                  python trainForKD.py -dropout 0.6 > output.log 2>&1
